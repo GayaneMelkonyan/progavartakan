@@ -1,4 +1,5 @@
-class Sev extends LivingCreature{
+var LivingCreature = require("./livingCreature.js");
+module.exports = class Sev extends LivingCreature{
     constructor(x, y, index) {
         super(x, y, index);
     }
