@@ -3,7 +3,10 @@ module.exports = class Grass extends LivingCreature {
     mul() {
         this.multiply++;
         var datarkVandakner = this.chooseCell(0);
-        var norVandak = random(datarkVandakner);
+        var index = Math.floor(Math.random()*datarkVandakner.length);
+        var norVandak = datarkVandakner[index];
+
+        //var norVandak = Math.random(datarkVandakner);
         //console.log(norVandak);
         if (norVandak && this.multiply >= 8) {
             var norX = norVandak[0];

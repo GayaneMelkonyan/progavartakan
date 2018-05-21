@@ -1,3 +1,4 @@
+var Sunk = require("./sunk.js");
 var LivingCreature = require("./livingCreature.js");
 module.exports = class Sev extends LivingCreature{
     constructor(x, y, index) {
@@ -42,11 +43,19 @@ module.exports = class Sev extends LivingCreature{
     }
 
 
+
+
     gmp() {
         var koxkivandakner = this.chooseCell(3);
-        var norVandak = random(koxkivandakner);
-        var datarkVandakner = this.chooseCell(4);
-        var newVandak4 = random(datarkVandakner);
+        var index = Math.floor(Math.random() * koxkivandakner.length);
+        var norVandak = koxkivandakner[index];
+
+
+        var datarkVandakner = this.chooseCell(3);
+        var index = Math.floor(Math.random() * datarkVandakner.length);
+        var newVandak4 = datarkVandakner[index];
+
+
         if (norVandak || newVandak4) {
             for (var i in this.directions) {
                 var x = this.directions[i][0];

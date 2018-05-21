@@ -1,10 +1,10 @@
 var LivingCreature = require("./livingCreature.js");
-module.exports = class Amenaker extends LivingCreature{
+module.exports = class Amenaker extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index);
         this.qayl = 0;
         this.utel = 0;
- 
+
     }
     chooseNewCoordinates() {
         this.directions = [
@@ -26,7 +26,11 @@ module.exports = class Amenaker extends LivingCreature{
     mul() {
         //this.qayl++;
         var datarkVandakner = this.chooseCell(0);
-        var norVandak = random(datarkVandakner);
+        var index = Math.floor(Math.random() * datarkVandakner.length);
+        var norVandak = datarkVandakner[index];
+
+
+
         if (norVandak) {
             var norX = norVandak[0];
             var norY = norVandak[1];
@@ -47,9 +51,15 @@ module.exports = class Amenaker extends LivingCreature{
     eat() {
         this.utel++;
         var datarkVandakner = this.chooseCell(1);
-        var norVandak = random(datarkVandakner);
+        var index = Math.floor(Math.random() * datarkVandakner.length);
+        var norVandak = datarkVandakner[index];
+
+
         var datarkVandakner = this.chooseCell(3);
-        var newVandak = random(datarkVandakner);
+        var index = Math.floor(Math.random() * datarkVandakner.length);
+        var newVandak = datarkVandakner[index];
+
+
         if (norVandak) {
             var norX = norVandak[0];
             var norY = norVandak[1];
@@ -112,10 +122,16 @@ module.exports = class Amenaker extends LivingCreature{
 
     move() {
         this.qayl++;
+       
         var datarkVandakner = this.chooseCell(1);
-        var norVandak = random(datarkVandakner);
+        var index = Math.floor(Math.random() * datarkVandakner.length);
+        var norVandak = datarkVandakner[index];
+
+
         var datarkVandakner = this.chooseCell(3);
-        var newVandak = random(datarkVandakner);
+        var index = Math.floor(Math.random() * datarkVandakner.length);
+        var newVandak = datarkVandakner[index];
+
         if (norVandak) {
             var norX = norVandak[0];
             var norY = norVandak[1];

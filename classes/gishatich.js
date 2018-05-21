@@ -13,7 +13,9 @@ var LivingCreature = require("./livingCreature.js");
 
     move() {
         var datarkVandakner = this.chooseCell(0);
-        var norVandak = random(datarkVandakner);
+        var index = Math.floor(Math.random() * datarkVandakner.length);
+        var norVandak = datarkVandakner[index];
+
         if (norVandak) {
             this.energy--;
             var norX = norVandak[0];
@@ -31,7 +33,8 @@ var LivingCreature = require("./livingCreature.js");
 
     eat() {
         var datarkVandakner = this.chooseCell(2);
-        var norVandak = random(datarkVandakner);
+        var index = Math.floor(Math.random() * datarkVandakner.length);
+        var norVandak = datarkVandakner[index];
         if (norVandak) {
             var norX = norVandak[0];
             var norY = norVandak[1];
@@ -69,7 +72,10 @@ var LivingCreature = require("./livingCreature.js");
     mul() {
         this.energy++;
         var datarkVandakner = this.chooseCell(1);
-        var norVandak = random(datarkVandakner);
+        var index = Math.floor(Math.random() * datarkVandakner.length);
+        var norVandak = datarkVandakner[index];
+
+
         if (norVandak) {
             var norX = norVandak[0];
             var norY = norVandak[1];
