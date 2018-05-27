@@ -6,18 +6,7 @@ module.exports = class Amenaker extends LivingCreature {
         this.utel = 0;
 
     }
-    chooseNewCoordinates() {
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
+
     chooseCell(character) {
         this.chooseNewCoordinates();
         return super.chooseCell(character);
@@ -32,6 +21,7 @@ module.exports = class Amenaker extends LivingCreature {
 
 
         if (norVandak) {
+            amenakerbazm++;
             var norX = norVandak[0];
             var norY = norVandak[1];
             matrix[norY][norX] = 3;
@@ -61,6 +51,7 @@ module.exports = class Amenaker extends LivingCreature {
 
 
         if (norVandak) {
+            amenakerutel++;
             var norX = norVandak[0];
             var norY = norVandak[1];
             //console.log(this.x, this.y);
@@ -96,11 +87,11 @@ module.exports = class Amenaker extends LivingCreature {
         }
 
 
-
-        if (this.utel >= 15) {
-            this.mul();
+        if (weather == 'ashun') {
+            if (this.utel >= 10) {
+                this.mul();
+            }
         }
-
         else {
             this.move();
         }
@@ -122,7 +113,6 @@ module.exports = class Amenaker extends LivingCreature {
 
     move() {
         this.qayl++;
-       
         var datarkVandakner = this.chooseCell(1);
         var index = Math.floor(Math.random() * datarkVandakner.length);
         var norVandak = datarkVandakner[index];
@@ -133,6 +123,7 @@ module.exports = class Amenaker extends LivingCreature {
         var newVandak = datarkVandakner[index];
 
         if (norVandak) {
+            amenakersharjvel++;
             var norX = norVandak[0];
             var norY = norVandak[1];
             //console.log(this.x, this.y);
@@ -166,7 +157,7 @@ module.exports = class Amenaker extends LivingCreature {
 
             }
         }
-        if (this.qayl >= 9) {
+        if (this.qayl >= 8) {
             this.die();
         }
     }

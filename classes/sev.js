@@ -51,7 +51,7 @@ module.exports = class Sev extends LivingCreature{
         var norVandak = koxkivandakner[index];
 
 
-        var datarkVandakner = this.chooseCell(3);
+        var datarkVandakner = this.chooseCell(4);
         var index = Math.floor(Math.random() * datarkVandakner.length);
         var newVandak4 = datarkVandakner[index];
 
@@ -65,6 +65,7 @@ module.exports = class Sev extends LivingCreature{
                         matrix[y][x] = 0;
                         for (var i in grassArr) {
                             if (x == grassArr[i].x && y == grassArr[i].y) {
+                                //xottariqner.push[age,"sevsunk"];
                                 grassArr.splice(i, 1);
                                 break;
                             }

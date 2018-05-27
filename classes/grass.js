@@ -1,6 +1,7 @@
 var LivingCreature = require("./livingCreature.js");
 module.exports = class Grass extends LivingCreature {
     mul() {
+
         this.multiply++;
         var datarkVandakner = this.chooseCell(0);
         var index = Math.floor(Math.random()*datarkVandakner.length);
@@ -8,7 +9,8 @@ module.exports = class Grass extends LivingCreature {
 
         //var norVandak = Math.random(datarkVandakner);
         //console.log(norVandak);
-        if (norVandak && this.multiply >= 8) {
+        if (norVandak && this.multiply >= 2) {
+            grassbazm++;
             var norX = norVandak[0];
             var norY = norVandak[1];
             matrix[norY][norX] = 1;

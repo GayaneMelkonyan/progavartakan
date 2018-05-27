@@ -2,7 +2,7 @@ var LivingCreature = require("./livingCreature.js");
 module.exports = class GrassEater extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index);
-        this.energy = 8;
+        this.energy = 13;
     }
 
     chooseCell(character) {
@@ -15,6 +15,7 @@ module.exports = class GrassEater extends LivingCreature {
         var index = Math.floor(Math.random() * datarkVandakner.length);
         var norVandak = datarkVandakner[index];
         if (norVandak) {
+            grasseatersharjvel++;
             this.energy--;
             var norX = norVandak[0];
             var norY = norVandak[1];
@@ -34,7 +35,7 @@ module.exports = class GrassEater extends LivingCreature {
         var index = Math.floor(Math.random() * datarkVandakner.length);
         var norVandak = datarkVandakner[index];
         if (norVandak) {
-
+            grasseaterutel++;
             var norX = norVandak[0];
             var norY = norVandak[1];
             //console.log(this.x, this.y);
@@ -45,15 +46,16 @@ module.exports = class GrassEater extends LivingCreature {
             this.energy++;
             for (var i in grassArr) {
                 if (norX == grassArr[i].x && norY == grassArr[i].y) {
+                    //xottariqner.push[age,"grassEater"];
                     grassArr.splice(i, 1);
                     break;
                 }
             }
-
-            if (this.energy >= 15) {
-                this.mul();
+            if (weather != 'dzmer' || weather != 'amar') {
+                if (this.energy >= 15) {
+                    this.mul();
+                }
             }
-
         }
         else {
             this.move();
@@ -78,6 +80,8 @@ module.exports = class GrassEater extends LivingCreature {
         var index = Math.floor(Math.random() * datarkVandakner.length);
         var norVandak = datarkVandakner[index];
         if (norVandak) {
+            grasseaterbazm++;
+            //console.log(grasseaterbazm);
             var norX = norVandak[0];
             var norY = norVandak[1];
             matrix[norY][norX] = 2;

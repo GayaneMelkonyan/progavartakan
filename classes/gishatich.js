@@ -1,11 +1,11 @@
 var LivingCreature = require("./livingCreature.js");
- module.exports =  class Gishatich extends LivingCreature {
+module.exports = class Gishatich extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index);
-        this.energy = 12;
+        this.energy = 20;
 
     }
-    
+
     chooseCell(character) {
         this.chooseNewCoordinates();
         return super.chooseCell(character);
@@ -17,6 +17,7 @@ var LivingCreature = require("./livingCreature.js");
         var norVandak = datarkVandakner[index];
 
         if (norVandak) {
+            gishatichsharjvel++;
             this.energy--;
             var norX = norVandak[0];
             var norY = norVandak[1];
@@ -36,6 +37,7 @@ var LivingCreature = require("./livingCreature.js");
         var index = Math.floor(Math.random() * datarkVandakner.length);
         var norVandak = datarkVandakner[index];
         if (norVandak) {
+            gishatichutel++;
             var norX = norVandak[0];
             var norY = norVandak[1];
             matrix[this.y][this.x] = 0;
@@ -50,8 +52,14 @@ var LivingCreature = require("./livingCreature.js");
                 }
             }
 
-            if (this.energy >= 15) {
+            if (this.energy >= 12) {
                 this.mul();
+            }
+
+            if (weather == 'ashun') {
+                if (this.energy >= 8) {
+                    this.mul();
+                }
             }
         }
         else {
@@ -77,12 +85,14 @@ var LivingCreature = require("./livingCreature.js");
 
 
         if (norVandak) {
+            gishatichbazm++;
+            //console.log(gishatichbazm);
             var norX = norVandak[0];
             var norY = norVandak[1];
             matrix[norY][norX] = 3;
             var norgishatich = new Gishatich(norX, norY, this.index);
             GishatichArr.push(norgishatich);
-            this.energy = 11;
+            this.energy = 2;
             for (var i in grassArr) {
                 if (grassArr[i].x == norX && grassArr[i].y == norY) {
                     grassArr.splice(i, 1);
