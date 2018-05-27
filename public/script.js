@@ -16,12 +16,12 @@ window.onload = main;
 
 function main() {
 	var socket = io.connect('http://localhost:3000');
-
+	
 
 
 	socket.on("matrixs", stexcel);
 	socket.on("background", guyner);
-
+	socket.on('PushedObj', stexcel);
 	
 	var col = '#acacac ';
 	function guyner(weather) {
@@ -35,18 +35,34 @@ function main() {
 			col = "#F0E68C";
 		}
 		else if (weather == 'dzmer') {
-			col = "#FAEBD7";
+			col = "#ADD8E6";
 		}
 	}
 
-	function stexcel(matrix) {
+	function stexcel(PushedObj) {
+		var matrix = PushedObj.Matrix;
+    	var weather = PushedObj.Weather;
+		
 		//console.log(matrix);
 		for (var y = 0; y < matrix.length; y++) {
 			for (var x = 0; x < matrix[y].length; x++) {
-				if (matrix[y][x] == 1) {
+				/*if (matrix[y][x] == 1) {
 					fill("green");
 					rect(x * side, y * side, side, side);
+				}*/
+					
+				if (matrix[y][x] == 1) {
+					if (weather == 'dzmer') {
+						fill("white");
+						
+					}
+					else{
+						fill("green");
+						
+					}
+						rect(x * side, y * side, side, side);
 				}
+
 				else if (matrix[y][x] == 2) {
 					fill("yellow");
 					rect(x * side, y * side, side, side);
@@ -68,7 +84,7 @@ function main() {
 					rect(x * side, y * side, side, side);
 				}
 				else if (matrix[y][x] == 5) {
-					fill("white");
+					fill("orange");
 					rect(x * side, y * side, side, side);
 				}
 				else if (matrix[y][x] == 0) {

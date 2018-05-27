@@ -129,16 +129,16 @@ io.on('connection', function () {
 function drawInServer() {
    
     num++;
-    if (num % 60 == 0) {
+    if (num % 24 == 0) {
         weather = 'garun';
     }
-    else if (num % 60 == 30) {
+    else if (num % 24 == 6) {
         weather = 'amar';
     }
-    else if (num % 60 == 40) {
+    else if (num % 24 == 12) {
         weather = 'ashun';
     }
-    else if (num % 60 == 50) {
+    else if (num % 24 == 18) {
         weather = 'dzmer';
     }
 
@@ -166,10 +166,16 @@ function drawInServer() {
         }
     }
 
-    io.sockets.emit("matrixs", matrix);
+    //io.sockets.emit("matrixs", matrix);
     io.sockets.emit("background", weather);
 
-    
+    var PushedObj = {
+        Matrix: matrix,
+        Weather: weather,
+    }
+    io.sockets.emit('PushedObj', PushedObj);
+
+
 
     takter++;
     var myJSON = JSON.stringify(obj, null, ' ');
